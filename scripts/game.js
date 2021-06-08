@@ -18,7 +18,10 @@ const gameBoard = document.getElementById('game-board');
 
 const main = currentTime => {
   if (gameOver) {
-    return alert('you lose');
+    if (confirm('You lost. Press ok to restart.')) {
+      window.location = '/'; // refresh the page
+    }
+    return;
   }
   // Requests a new frame 2 times per second
   window.requestAnimationFrame(main);
@@ -28,8 +31,6 @@ const main = currentTime => {
 
   // Check if seconds after the last render is less than the time between renders
   if (secondsAfterLastRender < (1 / SNAKE_SPEED)) return;
-
-  console.log(secondsAfterLastRender);
 
   // Get the last render time
   lastRenderTime = currentTime;
