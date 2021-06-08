@@ -19,7 +19,7 @@ const gameBoard = document.getElementById('game-board');
 const main = currentTime => {
   if (gameOver) {
     if (confirm('You lost. Press ok to restart.')) {
-      window.location = '/'; // refresh the page
+      window.location = 'https://edwardreyes29.github.io/snakeGame/'; // refresh the page
     }
     return;
   }
