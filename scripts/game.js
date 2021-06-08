@@ -38,5 +38,6 @@ const update = () => {
 }
 
 const draw = () => {
+  gameBoard.innerHTML = ''; // clear gameboard
   drawSnake(gameBoard);
 }
