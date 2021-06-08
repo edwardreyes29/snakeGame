@@ -4,6 +4,7 @@ import {
   SNAKE_SPEED 
 } from './snake.js';
 
+import { update as updateFood, draw as drawFood } from './food.js';
 /* 
   Set up Game loop 
 */
@@ -35,9 +36,11 @@ window.requestAnimationFrame(main);
 
 const update = () => {
   updateSnake();
+  updateFood();
 }
 
 const draw = () => {
   gameBoard.innerHTML = ''; // clear gameboard
   drawSnake(gameBoard);
+  drawFood(gameBoard);
 }

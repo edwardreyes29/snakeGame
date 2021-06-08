@@ -1,5 +1,6 @@
 import { getInputDirection } from "./input.js";
-export const SNAKE_SPEED = 3; // Snake will move 2 times per/sec
+export const SNAKE_SPEED = 5; // Snake will move 2 times per/sec
+let newSegments = 0;
 
 const snakeBody = [
   { x: 15, y: 15 }
@@ -12,6 +13,7 @@ const snakeBody = [
  * Add -1 to x to move left
  */
 export const update = () => {
+  addSegments();
   const inputDirection = getInputDirection();
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     // take the last element and assign it to the current position.
@@ -34,3 +36,24 @@ export const draw = (gameBoard) => {
     gameBoard.appendChild(snakeElement);
   })
 } 
+
+export const growSnake = amount => {
+  newSegments += amount;
+}
+
+export const onSnake = position => {
+  return snakeBody.some((segment => {
+    return equalPositions(segment, position);
+  }));
+}
+
+const equalPositions = (pos1, pos2) => {
+  return pos1.x === pos2.x && pos1.y === pos2.y;
+}
+
+const addSegments = () => {
+  for (let i = 0; i < newSegments; i++) {
+    snakeBody.push({ ...snakeBody[snakeBody.length - 1] });
+  }
+  newSegments = 0;
+}
