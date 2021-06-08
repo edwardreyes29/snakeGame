@@ -8,6 +8,7 @@ import {
   Set up Game loop 
 */
 let lastRenderTime = 0;
+const gameBoard = document.getElementById('game-board');
 
 const main = currentTime => {
 
@@ -37,5 +38,5 @@ const update = () => {
 }
 
 const draw = () => {
-  drawSnake();
+  drawSnake(gameBoard);
 }
