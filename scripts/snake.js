@@ -1,17 +1,18 @@
-export const SNAKE_SPEED = 2; // Snake will move 2 times per/sec
+import { getInputDirection } from "./input.js";
+export const SNAKE_SPEED = 3; // Snake will move 2 times per/sec
 
 const snakeBody = [
-  { x: 15, y: 15 },
-  { x: 16, y: 15 },
-  { x: 17, y: 15 },
-  { x: 18, y: 15 },
-  { x: 19, y: 15 },
+  { x: 15, y: 15 }
 ]; // position snake in the middle of the screen
 
 /*
- * Add 1 to x to move up
+ * Add 1 to y to move down
+ * Add -1 to y to move up
+ * Add 1 to x to move right
+ * Add -1 to x to move left
  */
 export const update = () => {
+  const inputDirection = getInputDirection();
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     // take the last element and assign it to the current position.
     // move snake to the position of it's parent
@@ -19,8 +20,8 @@ export const update = () => {
     console.log(snakeBody[i + 1]);
   }
 
-  snakeBody[0].x += 0;
-  snakeBody[0].y += 1;
+  snakeBody[0].x += inputDirection.x;
+  snakeBody[0].y += inputDirection.y;
 } 
 
 export const draw = (gameBoard) => {
