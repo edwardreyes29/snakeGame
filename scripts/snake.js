@@ -41,12 +41,20 @@ export const growSnake = amount => {
   newSegments += amount;
 }
 
-export const onSnake = position => {
-  return snakeBody.some((segment => {
+export const onSnake = (position, {ignoreHead = false } = {}) => {
+  return snakeBody.some(((segment, index) => {
+    if (ignoreHead && index === 0) return false;
     return equalPositions(segment, position);
   }));
 }
 
+export const getSnakeHead = () => {
+  return snakeBody[0];
+}
+
+export const snakeIntersection = () => {
+  return onSnake(snakeBody[0], {ignoreHead: true })
+}
 const equalPositions = (pos1, pos2) => {
   return pos1.x === pos2.x && pos1.y === pos2.y;
 }
