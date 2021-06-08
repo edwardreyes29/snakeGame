@@ -14,8 +14,8 @@ body {
   width: 100vmin; /* takes one width of the smallest dimension */
   height: 100vmin;
   display: grid;
-  grid-template-rows: repeat(21, 1fr); /* 21 rows */
-  grid-template-columns: repeat(21, 1fr); /* 21 columns */
+  grid-template-rows: repeat(30, 1fr); /* 21 rows */
+  grid-template-columns: repeat(30, 1fr); /* 21 columns */
 }
 
 .snake {
